@@ -1,0 +1,151 @@
+@import "../../Styles/_variables";
+
+.member {
+  background-color: $member-bg;
+}
+
+.section {
+  .container {
+    max-width: 900px;
+  }
+
+  .row {
+    margin-bottom: 15px;
+
+    .form-control {
+      &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 5px rgba($primary-color, 0.3);
+        outline: none;
+      }
+
+      &::placeholder {
+        color: lighten($text-color, 20%);
+      }
+
+      @media (max-width: 768px) {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 480px) {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+      }
+    }
+
+    .btn-link {
+      background: none;
+      border: none;
+      color: $primary-color;
+      text-decoration: underline;
+      cursor: pointer;
+      font-size: 0.9rem;
+      padding-left: 10px;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    #receipt-btn {
+        text-align: left;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+  }
+
+  .checkbox-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+
+    input[type="checkbox"] {
+      appearance: none;
+      min-width: 20px;
+      min-height: 20px;
+      background-color: $secondary-color;
+      border-radius: 4px;
+      margin-right: 10px;
+      position: relative;
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+
+      &:checked {
+        background-color: $checkmark-color;
+      }
+    }
+
+    label {
+      font-size: 0.9rem;
+      color: $text-color;
+
+      @media (max-width: 768px) {
+        font-size: 0.85rem;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 0.8rem;
+      }
+
+      a {
+        color: $primary-color;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background-color: $secondary-color;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  max-width: 90%;
+  max-height: 80%;
+  overflow: auto;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: $nav-hover;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}

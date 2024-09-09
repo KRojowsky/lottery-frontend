@@ -1,0 +1,71 @@
+@import "../../Styles/_variables";
+
+
+.section {
+    .container {
+      max-width: 1000px;
+
+      .location-details {
+        display: flex;
+        justify-content: left;
+        align-items: flex-start;
+        gap: 3rem;
+        width: 100%;
+        padding: 1rem 0;
+        border-bottom: 1px solid $nav-border;
+
+        .image-wrapper {
+            width: 300px;
+
+            .store-image {
+                width: 100%;
+                max-height: 400px;
+                border-radius: 8px;
+                object-fit: cover;
+            }
+        }
+
+        .address-details {
+            .center-name {
+                font-size: 1.5rem;
+            }
+
+            .data-line {
+                font-size: .9rem;
+            }
+        }
+        }
+
+        @media (max-width: 768px) {
+        .location-details {
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .image-wrapper {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .store-image {
+            max-height: 300px;
+        }
+        }
+
+        @media (max-width: 480px) {
+        .location-details {
+            gap: 1rem;
+        }
+
+        .image-wrapper {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .store-image {
+            max-height: 250px;
+        }
+    }
+    }
+}

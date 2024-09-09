@@ -1,0 +1,91 @@
+@import "../../Styles/_variables";
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: $text-color;
+  z-index: 1000;
+  padding: 2px 20px;
+  font-family: system-ui;
+  border: none;
+
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $secondary-color;
+    text-transform: uppercase;
+
+    img {
+      margin-right: 0.5rem;
+    }
+  }
+
+  .navbar-nav {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    .nav-link {
+      font-size: 1.1rem;
+      margin-left: .5rem;
+      padding: 10px;
+      color: $nav-text-color;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: $nav-hover;
+        color: $primary-color;
+      }
+    }
+
+    .dropdown-menu {
+      background-color: $text-color;
+      border: none;
+      margin: 5px 0 0 0px;
+      padding: 5px;
+
+      .dropdown-item {
+        border-radius: 5px;
+        color: $nav-text-color;
+        &:hover {
+          background-color: $nav-hover;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    a {
+      color: $nav-text-color;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+      padding: 5px;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: $nav-hover;
+        color: $primary-color;
+      }
+    }
+  }
+
+  .navbar-toggler {
+    border-color: $primary-color;
+  }
+
+  .navbar-toggler-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"%3e%3cpath stroke="%23ff6900" stroke-width="2" d="M5 7h20M5 15h20M5 23h20"/%3e%3c/svg%3e'); // Custom color for toggler icon
+  }
+}
+
+body {
+  padding-top: 56px;
+}

@@ -1,0 +1,45 @@
+@import "../../Styles/_variables";
+
+.footer {
+    background-color: $text-color;
+    padding: 10px 0;
+    width: 100%;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .footer-left {
+    color: $footer-color;
+  }
+  
+  .footer-right {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .footer-right a {
+    color: $footer-color;
+    transition: color 0.2s ease;
+  }
+  
+  .footer-right a:hover {
+    color: $primary-color;
+  }
+  
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+      font-size: 12px;
+    }
+  
+    .footer-left {
+      margin-bottom: 10px;
+    }
+  }
+  

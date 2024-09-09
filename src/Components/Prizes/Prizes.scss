@@ -1,0 +1,51 @@
+@import "../../Styles/_variables";
+
+.price-section {
+  padding: 2rem 0;
+  background-color: $secondary-color;
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+
+    .prizes-column {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+
+      .prize-item {
+        background: $secondary-color;
+        border-radius: 10px;
+        box-shadow: 0 0 9px 3px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        width: 300px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+          box-shadow: 0 0 9px 3px rgba(237, 104, 29, 0.5);
+        }
+
+        .prize-img {
+          width: 100%;
+          max-height: 400px;
+          object-fit: contain;
+          margin: 10px 0 10px 0;
+        }
+
+        .prize-name {
+          font-size: 1.1rem;
+          color: $nav-hover;
+          margin-top: auto;
+          padding: 10px;
+        }
+      }
+    }
+  }
+}
