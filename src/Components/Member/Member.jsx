@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Member.scss';
 import receiptImage from '../../assets/receipt.png';
-import Notification from '../notification/Notification'; // Ścieżka importu
+import Notification from '../Notification/Notification';
 
 const Member = () => {
   const [firstName, setFirstName] = useState('');
