@@ -83,3 +83,7 @@
     }
   }
 }
+
+.Toastify__toast-container {
+  z-index: 9999; /* Upewnia się, że powiadomienia są widoczne */
+}

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Member.scss';
-import receiptImage from "../../assets/receipt.png";
+import receiptImage from '../../assets/receipt.png';
+import Notification from '../notification/Notification'; // Ścieżka importu
 
 const Member = () => {
   const [firstName, setFirstName] = useState('');
@@ -12,6 +13,7 @@ const Member = () => {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [rodoAccepted, setRodoAccepted] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [notification, setNotification] = useState({ type: '', message: '' });
 
   const validatePhoneNumber = (number) => {
     const phoneRegex = /^[0-9]{9}$/;
@@ -22,12 +24,12 @@ const Member = () => {
     event.preventDefault();
 
     if (!validatePhoneNumber(phone)) {
-      alert('Numer telefonu powinien się składać z dokładnie 9 cyfr.');
+      setNotification({ type: 'error', message: 'Numer telefonu powinien się składać z dokładnie 9 cyfr.' });
       return;
     }
 
     if (!termsAccepted || !rodoAccepted) {
-      alert('Musisz potwierdzić swój wiek, zaakceptować regulamin i klauzulę informacyjną.');
+      setNotification({ type: 'error', message: 'Musisz potwierdzić swój wiek, zaakceptować regulamin i klauzulę informacyjną.' });
       return;
     }
 
@@ -39,7 +41,7 @@ const Member = () => {
           'Content-Type': 'application/json',
         },
       });
-      alert('Dołączenie do loterii zakończonie sukcesem. Powodzenia!');
+      setNotification({ type: 'success', message: 'Dołączenie do loterii zakończonie sukcesem. Powodzenia!' });
       setFirstName('');
       setLastName('');
       setPhone('');
@@ -48,8 +50,12 @@ const Member = () => {
       setTermsAccepted(false);
       setRodoAccepted(false);
     } catch (error) {
-      alert('Wystąpił błąd podczas zgłaszania Twojego uczestnictwa w loterii. Spróbuj ponownie.');
+      setNotification({ type: 'error', message: 'Wystąpił błąd podczas zgłaszania Twojego uczestnictwa w loterii. Spróbuj ponownie.' });
     }
+  };
+
+  const closeNotification = () => {
+    setNotification({ type: '', message: '' });
   };
 
   return (
@@ -57,7 +63,7 @@ const Member = () => {
       <div className="container">
         <h2 className="title">Weź udział</h2>
         <form onSubmit={handleSubmit}>
-        <div className="row">
+          <div className="row">
             <input
               type="text"
               id="firstName"
@@ -149,6 +155,12 @@ const Member = () => {
           </div>
         </div>
       )}
+
+      <Notification
+        message={notification.message}
+        type={notification.type}
+        onClose={closeNotification}
+      />
     </section>
   );
 };
