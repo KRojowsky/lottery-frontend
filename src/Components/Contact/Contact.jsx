@@ -12,7 +12,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8000/api/contact_messages/', {
+      await axios.post('https://lotteryapi.onrender.com/api/contact_messages/', {
         name,
         email,
         message,

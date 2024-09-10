@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Member.scss';
 import receiptImage from '../../assets/receipt.png';
 import Notification from '../Notification/Notification';
-import confetti from 'canvas-confetti'; // Import confetti
+import confetti from 'canvas-confetti';
 
 const Member = () => {
   const [firstName, setFirstName] = useState('');
@@ -15,7 +15,7 @@ const Member = () => {
   const [rodoAccepted, setRodoAccepted] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [notification, setNotification] = useState({ type: '', message: '' });
-  const [showConfetti, setShowConfetti] = useState(false); // New state for confetti
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const validatePhoneNumber = (number) => {
     const phoneRegex = /^[0-9]{9}$/;
@@ -38,7 +38,7 @@ const Member = () => {
     const data = { first_name: firstName, last_name: lastName, phone, email, receipt };
 
     try {
-      await axios.post('http://localhost:8000/api/members/create/', data, {
+      await axios.post('https://lotteryapi.onrender.com/api/members/create/', data, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -51,7 +51,7 @@ const Member = () => {
       setReceipt('');
       setTermsAccepted(false);
       setRodoAccepted(false);
-      setShowConfetti(true); // Show confetti on success
+      setShowConfetti(true);
     } catch (error) {
       setNotification({ type: 'error', message: 'Wystąpił błąd podczas zgłaszania Twojego uczestnictwa w loterii. Spróbuj ponownie.' });
     }
@@ -86,7 +86,7 @@ const Member = () => {
       };
 
       launchConfetti();
-      setShowConfetti(false); // Hide confetti after showing
+      setShowConfetti(false);
     }
   }, [showConfetti]);
 
