@@ -9,7 +9,7 @@ const Hero = () => {
   useEffect(() => {
     const launchConfetti = () => {
       const end = Date.now() + 2000;
-      const colors = ['#ff6900', '#f0f', '#0ff', '#00f', '#0f0'];
+      const colors = ['#ED681D', '#FFF', '#000', '#0000FF', '#FF0000'];
 
       (function frame() {
         confetti({

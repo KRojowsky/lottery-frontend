@@ -1,3 +1,5 @@
+@import "../../Styles/_variables";
+
 .notification {
     position: fixed;
     top: 10px;
@@ -26,5 +28,6 @@
     font-size: 20px;
     cursor: pointer;
     margin-left: auto;
+    margin-top:-3px;
   }
   
