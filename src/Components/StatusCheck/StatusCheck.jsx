@@ -24,7 +24,7 @@ const StatusCheck = ({ show, onClose }) => {
       if (response.status === 200) {
         const { exists } = response.data;
         if (exists) {
-          setStatusMessage('Zgłoszenie o podanym numerze paragonu i numerze telefonu zostało pomyślnie zgłoszone.');
+          setStatusMessage('Zgłoszenie o podanym numerze paragonu i numerze telefonu zostało pomyślnie zarejestrowane.');
           setStatusClass('success'); 
         } else {
           setStatusMessage('Nie znaleziono zgłoszenia dla podanego numeru paragonu i telefonu.');
