@@ -39,7 +39,7 @@ const Contact = () => {
           <div className="col-lg-6 contact-info">
             <p><strong>Tel:</strong> 575 228 666</p>
             <p><strong>E-mail:</strong> sklep@mi-store.pl</p>
-            <p><strong>Pełna nazwa:</strong> GGMEDIA.PL Sp. z o.o. Sp. K.</p>
+            <p><strong>Pełna nazwa:</strong> GGSTORES.PL Sp. z o.o. Sp. K.</p>
             <p><strong>Adres:</strong> ul. Królowej Jadwigi 98, 30-209 Kraków (POLSKA)</p>
           </div>
           <div className="col-lg-6 contact-form-wrapper">
