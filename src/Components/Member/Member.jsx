@@ -250,7 +250,7 @@ const Member = () => {
               type="checkbox"
               id="newsletterAccepted"
               checked={newsletterAccepted}
-              onChange={() => setNewsletter+Accepted(!newsletterAccepted)}
+              onChange={() => setNewsletterAccepted(!newsletterAccepted)}
             />
             <label htmlFor="newsletterAccepted">
               *Wyrażam zgodę na przetwarzanie moich danych osobowych w celach marketingowych przez GG Stores sp. z o.o. sp. k., która będzie administratorem tych danych. Potwierdzam zapoznanie się z <a href="https://mi-store.pl/Polityka-prywatnosci-chelp-pol-32.html" target='blank'>informacjami dotyczącymi przetwarzania</a> moich danych osobowych przez tego administratora. Jestem świadomy(a), że moje dane będą przetwarzane w celu celach marketingowych m.in. poprzez zapis do newslettera i otrzymywanie wiadomości.            </label>
