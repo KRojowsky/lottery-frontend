@@ -11,7 +11,7 @@ const Footer = () => {
             <span>Organizatorem loterii jest Grzegrzółka Loterie sp. z o.o.</span>
             <span>Biuro w Warszawie: ul. Wrzesińska 12/37, 03-713 Warszawa</span>
             <span>Kontakt: info@grzegrzolka.com, tel. 48 22 698 58 88</span>
-            <span><i>Copyright &copy; Mi-store 2024</i></span>
+            <span><i>Copyright &copy; GG Stores Sp. z o.o. sp.k.</i></span>
           </div>
           <div className="footer-right">
             <a href="https://mi-store.pl/" target='_blank' aria-label="Shop">
