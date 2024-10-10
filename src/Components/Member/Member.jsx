@@ -11,7 +11,7 @@ const Member = () => {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [receipt, setReceipt] = useState('');
-  const [purchaseDate, setPurchaseDate] = useState(''); // Nowa zmienna stanu na datę zakupu
+  const [purchaseDate, setPurchaseDate] = useState('');
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [ageConfirmed, setAgeConfirmed] = useState(false);
   const [dataProcessingAccepted, setDataProcessingAccepted] = useState(false);
@@ -45,11 +45,11 @@ const Member = () => {
       phone, 
       email, 
       receipt, 
-      purchase_date: purchaseDate // Dodanie daty zakupu do danych
+      purchase_date: purchaseDate
     };
 
     try {
-      await axios.post('https://lotteryapi.onrender.com/api/members/create/', data, {
+      await axios.post('http://127.0.0.1:8000/api/members/create/', data, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -60,7 +60,7 @@ const Member = () => {
       setPhone('');
       setEmail('');
       setReceipt('');
-      setPurchaseDate(''); // Reset daty zakupu
+      setPurchaseDate('');
       setTermsAccepted(false);
       setAgeConfirmed(false);
       setDataProcessingAccepted(false);
@@ -91,18 +91,19 @@ const Member = () => {
     if (showConfetti) {
       const launchConfetti = () => {
         const end = Date.now() + 2000;
-        const colors = ['#ED681D', '#FFF', '#000', '#0000FF', '#FF0000'];
+        const colors = ['#FF0000', '#00FF00', '#FFD700', '#FFFFFF'];
 
         (function frame() {
           confetti({
-            particleCount: 5,
+            particleCount: 10,
             angle: Math.random() * 360,
             spread: 70,
             origin: {
               x: Math.random(),
-              y: Math.random() - 0.2,
+              y: Math.random() - 0.2
             },
             colors: colors,
+            shapes: ['square', 'circle'],
           });
 
           if (Date.now() < end) {

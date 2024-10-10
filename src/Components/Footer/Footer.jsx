@@ -2,14 +2,16 @@ import React from 'react';
 import './Footer.scss';
 import { FaFacebook, FaInstagram, FaTiktok, FaShoppingCart } from 'react-icons/fa';
 
-
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-content">
           <div className="footer-left">
-            <span>Copyright &copy; Mi-store 2024</span>
+            <span>Organizatorem loterii jest Grzegrzółka Loterie sp. z o.o.</span>
+            <span>Biuro w Warszawie: ul. Wrzesińska 12/37, 03-713 Warszawa</span>
+            <span>Kontakt: info@grzegrzolka.com, tel. 48 22 698 58 88</span>
+            <span><i>Copyright &copy; Mi-store 2024</i></span>
           </div>
           <div className="footer-right">
             <a href="https://mi-store.pl/" target='_blank' aria-label="Shop">

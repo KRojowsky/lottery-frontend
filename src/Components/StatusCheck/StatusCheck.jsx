@@ -12,7 +12,7 @@ const StatusCheck = ({ show, onClose }) => {
     event.preventDefault();
   
     try {
-      const response = await axios.post('https://lotteryapi.onrender.com/api/members/status/', {
+      const response = await axios.post('http://127.0.0.1:8000/api/members/status/', {
         phone: statusPhone,
         receipt: statusReceipt
       }, {

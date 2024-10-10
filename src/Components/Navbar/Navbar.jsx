@@ -13,7 +13,7 @@ const Navbar = () => {
   const [showStatusPopup, setShowStatusPopup] = useState(false);
   const [showCountdown, setShowCountdown] = useState(false);
 
-  const targetDate = new Date('2024-09-30T00:00:00');
+  const targetDate = new Date('2024-12-31T23:59:59');
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -40,7 +40,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/status.pdf" target="_blank" rel="noopener noreferrer">
+              <a className="nav-link" href="#" target="_blank" rel="noopener noreferrer">
                 Regulamin
               </a>
             </li>

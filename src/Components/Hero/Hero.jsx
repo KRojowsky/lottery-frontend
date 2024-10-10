@@ -9,18 +9,19 @@ const Hero = () => {
   useEffect(() => {
     const launchConfetti = () => {
       const end = Date.now() + 2000;
-      const colors = ['#ED681D', '#FFF', '#000', '#0000FF', '#FF0000'];
+      const colors = ['#FF0000', '#00FF00', '#FFD700', '#FFFFFF'];
 
       (function frame() {
         confetti({
-          particleCount: 5,
+          particleCount: 10,
           angle: Math.random() * 360,
           spread: 70,
           origin: {
             x: Math.random(),
             y: Math.random() - 0.2
           },
-          colors: colors
+          colors: colors,
+          shapes: ['square', 'circle'],
         });
 
         if (Date.now() < end) {
