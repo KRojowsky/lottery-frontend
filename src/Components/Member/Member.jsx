@@ -12,7 +12,10 @@ const Member = () => {
   const [email, setEmail] = useState('');
   const [receipt, setReceipt] = useState('');
   const [termsAccepted, setTermsAccepted] = useState(false);
-  const [rodoAccepted, setRodoAccepted] = useState(false);
+  const [ageConfirmed, setAgeConfirmed] = useState(false);
+  const [dataProcessingAccepted, setDataProcessingAccepted] = useState(false);
+  const [newsletterAccepted, setNewsletterAccepted] = useState(false);
+  const [selectAll, setSelectAll] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [notification, setNotification] = useState({ type: '', message: '' });
   const [showConfetti, setShowConfetti] = useState(false);
@@ -30,8 +33,8 @@ const Member = () => {
       return;
     }
 
-    if (!termsAccepted || !rodoAccepted) {
-      setNotification({ type: 'error', message: 'Musisz potwierdzić swój wiek, zaakceptować regulamin i klauzulę informacyjną.' });
+    if (!termsAccepted || !ageConfirmed || !dataProcessingAccepted) {
+      setNotification({ type: 'error', message: 'Musisz zaakceptować wymagane zgody.' });
       return;
     }
 
@@ -50,7 +53,10 @@ const Member = () => {
       setEmail('');
       setReceipt('');
       setTermsAccepted(false);
-      setRodoAccepted(false);
+      setAgeConfirmed(false);
+      setDataProcessingAccepted(false);
+      setNewsletterAccepted(false);
+      setSelectAll(false);
       setShowConfetti(true);
     } catch (error) {
       setNotification({ type: 'error', message: 'Wystąpił błąd podczas zgłaszania Twojego uczestnictwa w loterii. Spróbuj ponownie.' });
@@ -60,6 +66,17 @@ const Member = () => {
   const closeNotification = () => {
     setNotification({ type: '', message: '' });
   };
+
+  const handleSelectAll = () => {
+    const newSelectAll = !selectAll;
+    setSelectAll(newSelectAll);
+    setTermsAccepted(newSelectAll);
+    setAgeConfirmed(newSelectAll);
+    setDataProcessingAccepted(newSelectAll);
+    setNewsletterAccepted(newSelectAll);
+  };
+
+  const isFormValid = termsAccepted && ageConfirmed && dataProcessingAccepted && newsletterAccepted;
 
   useEffect(() => {
     if (showConfetti) {
@@ -74,9 +91,9 @@ const Member = () => {
             spread: 70,
             origin: {
               x: Math.random(),
-              y: Math.random() - 0.2
+              y: Math.random() - 0.2,
             },
-            colors: colors
+            colors: colors,
           });
 
           if (Date.now() < end) {
@@ -149,8 +166,28 @@ const Member = () => {
               onChange={(e) => setReceipt(e.target.value)}
               required
             />
-            <button id="receipt-btn" type="button" className='btn btn-link' onClick={() => setShowPopup(true)}>Gdzie znajdę numer paragonu?</button>
+            <button
+              id="receipt-btn"
+              type="button"
+              className="btn btn-link"
+              onClick={() => setShowPopup(true)}
+            >
+              Gdzie znajdę numer paragonu?
+            </button>
           </div>
+
+          {/* Zaznacz wszystkie */}
+          <div className="checkbox-row">
+            <input
+              type="checkbox"
+              id="selectAll"
+              checked={selectAll}
+              onChange={handleSelectAll}
+            />
+            <label htmlFor="selectAll">Zaznacz wszystkie</label>
+          </div>
+
+          {/* Pojedyncze zgody */}
           <div className="checkbox-row">
             <input
               type="checkbox"
@@ -160,22 +197,52 @@ const Member = () => {
               required
             />
             <label htmlFor="terms">
-              Oświadczam, że jestem osobą <b>pełnoletnią i mam ukończone 18 lat</b>.
+              *Potwierdzam, że przystępuję do udziału w loterii pod nazwą „Świąteczna loteria w salonach Xiaomi i na mi-store.pl" („Loteria") jako konsument i zapoznałem(am) się z Regulaminem Loterii oraz akceptuję jego postanowienia.
             </label>
           </div>
           <div className="checkbox-row">
             <input
               type="checkbox"
-              id="rodo"
-              checked={rodoAccepted}
-              onChange={() => setRodoAccepted(!rodoAccepted)}
+              id="ageConfirmed"
+              checked={ageConfirmed}
+              onChange={() => setAgeConfirmed(!ageConfirmed)}
               required
             />
-            <label htmlFor="rodo">
-              Zapoznałam/-em się z regulaminem loterii <b>„LOTERII ŚWIĄTECZNEJ MI-STORE”</b> wraz z zawartą w nim klauzulą informacyjną dotyczącą przetwarzania danych osobowych i akceptuję jego wszystkie postanowienia.
+            <label htmlFor="ageConfirmed">
+              *Potwierdzam, że ukończyłem(am) 18 lat oraz spełniam warunki uczestnictwa określone w Regulaminie Loterii, w tym nie należę do osób wyłączonych z udziału, zgodnie z pkt 9. Regulaminu.
             </label>
           </div>
-          <button type="submit" className="btn btn-primary">Wyślij</button>
+          <div className="checkbox-row">
+            <input
+              type="checkbox"
+              id="dataProcessingAccepted"
+              checked={dataProcessingAccepted}
+              onChange={() => setDataProcessingAccepted(!dataProcessingAccepted)}
+              required
+            />
+            <label htmlFor="dataProcessingAccepted">
+              *Potwierdzam zapoznanie się z informacjami dotyczącymi przetwarzania moich danych osobowych przez administratora, firmę Grzegrzółka Loterie sp. z o. o. oraz z przysługującymi mi prawami.
+            </label>
+          </div>
+          <div className="checkbox-row">
+            <input
+              type="checkbox"
+              id="newsletterAccepted"
+              checked={newsletterAccepted}
+              onChange={() => setNewsletterAccepted(!newsletterAccepted)}
+            />
+            <label htmlFor="newsletterAccepted">
+              *Wyrażam zgodę na zapis do newslettera i otrzymywanie wiadomości marketingowych od MI-Store.pl.
+            </label>
+          </div>
+
+          <button
+            type="submit"
+            className={`btn btn-primary ${!isFormValid ? 'disabled' : ''}`}
+            disabled={!isFormValid}
+          >
+            Wyślij
+          </button>
         </form>
       </div>
 
@@ -183,16 +250,14 @@ const Member = () => {
         <div className="popup-overlay" onClick={() => setShowPopup(false)}>
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
             <img src={receiptImage} alt="Receipt Example" />
-            <button className="close-popup" onClick={() => setShowPopup(false)}>X</button>
+            <button className="close-popup" onClick={() => setShowPopup(false)}>
+              X
+            </button>
           </div>
         </div>
       )}
 
-      <Notification
-        message={notification.message}
-        type={notification.type}
-        onClose={closeNotification}
-      />
+      <Notification message={notification.message} type={notification.type} onClose={closeNotification} />
     </section>
   );
 };

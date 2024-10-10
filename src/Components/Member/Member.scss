@@ -149,3 +149,10 @@
     }
   }
 }
+
+.btn.disabled {
+  background-color: #DBDBDB;
+  border: 1px solid #808080;
+  cursor: not-allowed;
+  color: #000;
+}
