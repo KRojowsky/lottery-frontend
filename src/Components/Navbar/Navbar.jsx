@@ -13,7 +13,7 @@ const Navbar = () => {
   const [showStatusPopup, setShowStatusPopup] = useState(false);
   const [showCountdown, setShowCountdown] = useState(false);
 
-  const targetDate = new Date('2024-12-31T23:59:59');
+  const targetDate = new Date('2025-01-07T23:59:59');
 
   useEffect(() => {
     const timer = setTimeout(() => {

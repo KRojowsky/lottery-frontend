@@ -12,7 +12,7 @@ const StatusCheck = ({ show, onClose }) => {
     event.preventDefault();
   
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/members/status/', {
+      const response = await axios.post('https://lotteryapi.onrender.com/api/members/status/', {
         phone: statusPhone,
         receipt: statusReceipt
       }, {
@@ -27,13 +27,13 @@ const StatusCheck = ({ show, onClose }) => {
           setStatusMessage('Zgłoszenie o podanym numerze paragonu i numerze telefonu zostało pomyślnie zarejestrowane.');
           setStatusClass('success'); 
         } else {
-          setStatusMessage('Nie znaleziono zgłoszenia dla podanego numeru paragonu i telefonu.');
+          setStatusMessage('Nie znaleziono zgłoszenia dla podanego numeru dowodu zakupu i telefonu.');
           setStatusClass('error');
         }
       }
     } catch (error) {
       if (error.response && error.response.status === 404) {
-        setStatusMessage('Nie znaleziono zgłoszenia dla podanego numeru paragonu i telefonu.');
+        setStatusMessage('Nie znaleziono zgłoszenia dla podanego numeru dowodu zakupu i telefonu.');
         setStatusClass('error');
       } else {
         setStatusMessage('Wystąpił błąd podczas sprawdzania statusu zgłoszenia.');
@@ -62,7 +62,7 @@ const StatusCheck = ({ show, onClose }) => {
           <input
             type="text"
             className="form-control"
-            placeholder="Numer paragonu"
+            placeholder="Numer dowodu zakupu"
             value={statusReceipt}
             onChange={(e) => setStatusReceipt(e.target.value)}
             required

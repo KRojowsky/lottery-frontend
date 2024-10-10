@@ -49,7 +49,7 @@ const Member = () => {
     };
 
     try {
-      await axios.post('http://127.0.0.1:8000/api/members/create/', data, {
+      await axios.post('https://lotteryapi.onrender.com/api/members/create/', data, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -243,19 +243,17 @@ const Member = () => {
               required
             />
             <label htmlFor="dataProcessingAccepted">
-              *Potwierdzam zapoznanie się z informacjami dotyczącymi przetwarzania moich danych osobowych przez administratora, firmę Grzegrzółka Loterie sp. z o. o. oraz z przysługującymi mi prawami.
-            </label>
+              *Potwierdzam zapoznanie się z <a href="/Grzegrzółka Loterie Informacja o przetwarzaniu.pdf" target='blank'>informacjami dotyczącymi przetwarzania</a> moich danych osobowych przez administratora, firmę Grzegrzółka Loterie sp. z o. o. oraz z przysługującymi mi prawami. Jestem świadomy(a), że moje dane będą przetwarzane w celu realizacji Loterii oraz m.in. podczas rozpatrywania reklamacji czy do celów analitycznych i statystycznych.            </label>
           </div>
           <div className="checkbox-row">
             <input
               type="checkbox"
               id="newsletterAccepted"
               checked={newsletterAccepted}
-              onChange={() => setNewsletterAccepted(!newsletterAccepted)}
+              onChange={() => setNewsletter+Accepted(!newsletterAccepted)}
             />
             <label htmlFor="newsletterAccepted">
-              *Wyrażam zgodę na zapis do newslettera i otrzymywanie wiadomości marketingowych od MI-Store.pl.
-            </label>
+              *Wyrażam zgodę na przetwarzanie moich danych osobowych w celach marketingowych przez GG Stores sp. z o.o. sp. k., która będzie administratorem tych danych. Potwierdzam zapoznanie się z <a href="https://mi-store.pl/Polityka-prywatnosci-chelp-pol-32.html" target='blank'>informacjami dotyczącymi przetwarzania</a> moich danych osobowych przez tego administratora. Jestem świadomy(a), że moje dane będą przetwarzane w celu celach marketingowych m.in. poprzez zapis do newslettera i otrzymywanie wiadomości.            </label>
           </div>
           <i>*pola obowiązkowe</i>
           <button
