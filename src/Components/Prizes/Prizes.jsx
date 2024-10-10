@@ -5,9 +5,9 @@ import prize2 from '../../assets/prize2.png';
 import prize3 from '../../assets/prize3.png';
 
 const prizes = [
-  { img: prize1, name: 'Smartfon Xiaomi 14 12+512GB' },
-  { img: prize2, name: 'Tablet Redmi Pad Pro 8+256GB' },
-  { img: prize3, name: 'Smartfon Redmi Note 13 Pro 5G 8+256GB' },
+  { img: prize1, name: 'Xiaomi Electric Scooter 4 Pro 2nd Gen' },
+  { img: prize2, name: 'Tablet Xiaomi Pad 6 8+256GB Gravity Gray' },
+  { img: prize3, name: 'Air Fryer Frytownica Beztłuszczowa Xiaomi Mi Smart 6.5L' },
 ];
 
 const Prizes = () => {
