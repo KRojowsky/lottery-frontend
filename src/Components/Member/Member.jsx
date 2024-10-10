@@ -11,6 +11,7 @@ const Member = () => {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [receipt, setReceipt] = useState('');
+  const [purchaseDate, setPurchaseDate] = useState(''); // Nowa zmienna stanu na datę zakupu
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [ageConfirmed, setAgeConfirmed] = useState(false);
   const [dataProcessingAccepted, setDataProcessingAccepted] = useState(false);
@@ -38,7 +39,14 @@ const Member = () => {
       return;
     }
 
-    const data = { first_name: firstName, last_name: lastName, phone, email, receipt };
+    const data = { 
+      first_name: firstName, 
+      last_name: lastName, 
+      phone, 
+      email, 
+      receipt, 
+      purchase_date: purchaseDate // Dodanie daty zakupu do danych
+    };
 
     try {
       await axios.post('https://lotteryapi.onrender.com/api/members/create/', data, {
@@ -52,6 +60,7 @@ const Member = () => {
       setPhone('');
       setEmail('');
       setReceipt('');
+      setPurchaseDate(''); // Reset daty zakupu
       setTermsAccepted(false);
       setAgeConfirmed(false);
       setDataProcessingAccepted(false);
@@ -156,27 +165,40 @@ const Member = () => {
               required
             />
           </div>
+          
           <div className="row">
             <input
               type="text"
               id="receipt"
               className="form-control"
-              placeholder="Numer paragonu"
+              placeholder="Numer dowodu zakupu"
               value={receipt}
               onChange={(e) => setReceipt(e.target.value)}
+              required
+            />
+          </div>
+          <div className="row row-data">
+            <label htmlFor="purchaseDate" className="purchase-label">
+              <i>Data zakupu:</i>
+            </label>
+            <input
+              type="date"
+              id="purchaseDate"
+              className="form-control"
+              value={purchaseDate}
+              onChange={(e) => setPurchaseDate(e.target.value)}
               required
             />
             <button
               id="receipt-btn"
               type="button"
-              className="btn btn-link"
+              className="btn btn-link receipt-btn"
               onClick={() => setShowPopup(true)}
             >
               Gdzie znajdę numer paragonu?
             </button>
           </div>
 
-          {/* Zaznacz wszystkie */}
           <div className="checkbox-row">
             <input
               type="checkbox"
@@ -187,7 +209,6 @@ const Member = () => {
             <label htmlFor="selectAll">Zaznacz wszystkie</label>
           </div>
 
-          {/* Pojedyncze zgody */}
           <div className="checkbox-row">
             <input
               type="checkbox"
@@ -235,7 +256,7 @@ const Member = () => {
               *Wyrażam zgodę na zapis do newslettera i otrzymywanie wiadomości marketingowych od MI-Store.pl.
             </label>
           </div>
-
+          <i>*pola obowiązkowe</i>
           <button
             type="submit"
             className={`btn btn-primary ${!isFormValid ? 'disabled' : ''}`}

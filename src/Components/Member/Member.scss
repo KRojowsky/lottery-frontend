@@ -9,8 +9,17 @@
     max-width: 900px;
   }
 
+  .row-data{
+    margin-top: -10px;
+
+    .purchase-label {
+      margin-bottom: 5px;
+      display: block;
+    }
+  }
+
   .row {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 
     .form-control {
       &:focus {
@@ -20,7 +29,7 @@
       }
 
       &::placeholder {
-        color: lighten($text-color, 20%);
+        color: lighten($text-color, 50%);
       }
 
       @media (max-width: 768px) {
@@ -152,7 +161,7 @@
 
 .btn.disabled {
   background-color: #DBDBDB;
-  border: 1px solid #808080;
+  border: 1px solid #969595;
   cursor: not-allowed;
   color: #000;
 }
