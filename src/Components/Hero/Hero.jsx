@@ -39,7 +39,7 @@ const Hero = () => {
         <div className="hero-up">
           <img src={logo} alt="Logo firmy" />
           <div className="hero-title">
-            <span>KUPUJ</span> i <span>WYGRYWAJ</span>
+            <h1>KUPUJ I WYGRAJ W ŚWIĄTECZNEJ LOTERII W SALONACH XIAOMI STORE I NA MI-STORE.PL</h1>
           </div>
         </div>
         <div className="hero-middle">
