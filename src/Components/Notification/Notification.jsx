@@ -1,14 +1,17 @@
 import React from 'react';
-import './Notification.scss'; // Stylizacja powiadomień
+import './Notification.scss';
 
 const Notification = ({ message, type, onClose }) => {
   if (!message) return null;
 
   return (
-    <div className={`notification ${type}`}>
-      {message}
-      <button className="close-btn" onClick={onClose}>×</button>
-    </div>
+    <>
+      <div className="overlay" onClick={onClose}></div>
+      <div className={`notification ${type}`}>
+        {message}
+        <button className="close-btn" onClick={onClose}>×</button>
+      </div>
+    </>
   );
 };
 

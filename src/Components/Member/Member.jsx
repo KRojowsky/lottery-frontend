@@ -11,6 +11,7 @@ const Member = () => {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [receipt, setReceipt] = useState('');
+  const [nip, setNip] = useState('');
   const [purchaseDate, setPurchaseDate] = useState('');
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [ageConfirmed, setAgeConfirmed] = useState(false);
@@ -26,11 +27,41 @@ const Member = () => {
     return phoneRegex.test(number);
   };
 
+  const validateReceiptNumber = (number) => {
+    const receiptRegex = /^[a-zA-Z0-9/]+$/;
+    return receiptRegex.test(number);
+  };
+
+  const validatePurchaseDate = (date) => {
+    const startDate = new Date('2024-11-15');
+    const endDate = new Date('2024-12-31');
+    const purchase = new Date(date);
+    return purchase >= startDate && purchase <= endDate;
+  };
+
+  const validateNip = (number) => {
+    return number === '6772428876';
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!validatePhoneNumber(phone)) {
       setNotification({ type: 'error', message: 'Numer telefonu powinien się składać z dokładnie 9 cyfr.' });
+      return;
+    }
+
+    if (!validateReceiptNumber(receipt)) {
+      setNotification({ type: 'error', message: 'Numer dowodu zakupu może zawierać tylko litery, cyfry i znak "/"' });
+      return;
+    }
+
+    if (!validatePurchaseDate(purchaseDate)) {
+      setNotification({ type: 'error', message: 'Data zakupu musi być między 15.11.2024 a 31.12.2024.' });
+      return;
+    }
+
+    if (!validateNip(nip)) {
+      setNotification({ type: 'error', message: 'Podaj poprawny numer NIP.' });
       return;
     }
 
@@ -45,6 +76,7 @@ const Member = () => {
       phone, 
       email, 
       receipt, 
+      nip,
       purchase_date: purchaseDate
     };
 
@@ -60,6 +92,7 @@ const Member = () => {
       setPhone('');
       setEmail('');
       setReceipt('');
+      setNip('');
       setPurchaseDate('');
       setTermsAccepted(false);
       setAgeConfirmed(false);
@@ -175,6 +208,17 @@ const Member = () => {
               placeholder="Numer dowodu zakupu"
               value={receipt}
               onChange={(e) => setReceipt(e.target.value)}
+              required
+            />
+          </div>
+          <div className="row">
+            <input
+              type="text"
+              id="nip"
+              className="form-control"
+              placeholder="NIP"
+              value={nip}
+              onChange={(e) => setNip(e.target.value)}
               required
             />
           </div>

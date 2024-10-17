@@ -22,7 +22,7 @@ const Rules = () => {
           </div>
           <div className="rule-card" data-number="3">
             <span className="rule-step">Wygraj</span>
-            <p>Sprawdź wyniki losowania, które odbędzie się <b>22.01.2025</b>. Powodzenia!</p>
+            <p>Losowanie finałowe odbędzie się <b>24.01.2025</b>. Wyniki zostaną opublikowane na stronie loterii. Powodzenia!</p>
           </div>
         </div>
       </div>
