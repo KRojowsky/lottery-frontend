@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Member.scss';
-import receiptImage from '../../assets/receipt.png';
+import receiptImage1 from '../../assets/receipt1.png';
+import receiptImage2 from '../../assets/receipt2.png';
 import Notification from '../Notification/Notification';
 import confetti from 'canvas-confetti';
 
@@ -240,7 +241,7 @@ const Member = () => {
               className="btn btn-link receipt-btn"
               onClick={() => setShowPopup(true)}
             >
-              Gdzie znajdę numer paragonu?
+              Gdzie znajdę numer dowodu zakupu?
             </button>
           </div>
 
@@ -313,7 +314,16 @@ const Member = () => {
       {showPopup && (
         <div className="popup-overlay" onClick={() => setShowPopup(false)}>
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-            <img src={receiptImage} alt="Paragon" />
+            <div className="receipt-section">
+              <div className="receipt">
+                <h3>Sklep stacjonarny</h3>
+                <img src={receiptImage1} alt="Paragon Sklepy stacjonarne" />
+              </div>
+              <div className="receipt">
+                <h3>Sklep online</h3>
+                <img src={receiptImage2} alt="Paragon Sklep online" />
+              </div>
+            </div>
             <button className="close-popup" onClick={() => setShowPopup(false)}>
               X
             </button>
