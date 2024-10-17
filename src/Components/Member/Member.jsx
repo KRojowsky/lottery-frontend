@@ -81,12 +81,12 @@ const Member = () => {
     };
 
     try {
-      await axios.post('http://127.0.0.1:8000/api/members/create/', data, {
+      await axios.post('https://lotteryapi.onrender.com/api/members/create/', data, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-      setNotification({ type: 'success', message: 'Dziękujemy za zgłoszenie w loterii. Na maila otrzymasz potwierdzenie udziału.' });
+      setNotification({ type: 'success', message: 'Dołączenie do loterii zakończonie sukcesem. Powodzenia!' });
       setFirstName('');
       setLastName('');
       setPhone('');
