@@ -6,7 +6,7 @@ import prize3 from '../../assets/prize3.png';
 
 const prizes = [
   { img: prize1, name: 'Xiaomi Electric Scooter 4 Pro 2nd Gen', count: '10x' },
-  { img: prize2, name: 'Tablet Xiaomi Pad 6 8+256GB Gravity Gray', count: '10x' },
+  { img: prize2, name: 'Tablet Redmi Pad SE 8+256GB', count: '10x' },
   { img: prize3, name: 'Air Fryer Frytownica Beztłuszczowa Xiaomi Mi Smart 6.5L', count: '10x' },
 ];
 
