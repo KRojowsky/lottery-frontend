@@ -14,6 +14,7 @@ const Member = () => {
   const [receipt, setReceipt] = useState('');
   const [nip, setNip] = useState('');
   const [purchaseDate, setPurchaseDate] = useState('');
+  const [captcha, setCaptcha] = useState('');
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [ageConfirmed, setAgeConfirmed] = useState(false);
   const [dataProcessingAccepted, setDataProcessingAccepted] = useState(false);
@@ -71,20 +72,28 @@ const Member = () => {
       return;
     }
 
-    const data = { 
+    const data = {
+      captcha,
       first_name: firstName, 
       last_name: lastName, 
-      phone, 
+      phone: parseInt(phone, 10),
       email, 
-      receipt, 
+      agreements: [
+        { type: "termsAccepted", accepted: termsAccepted },
+        { type: "ageConfirmed", accepted: ageConfirmed },
+        { type: "dataProcessingAccepted", accepted: dataProcessingAccepted },
+        { type: "newsletterAccepted", accepted: newsletterAccepted },
+      ],
+      receiptNumber: receipt,
+      purchaseDate: purchaseDate.split('-').reverse().join('-'),
       nip,
-      purchase_date: purchaseDate
     };
 
     try {
-      await axios.post('https://lotteryapi.onrender.com/api/members/create/', data, {
+      await axios.post('https://api-loterie.dev-is.pl/application/mistore', data, {
         headers: {
           'Content-Type': 'application/json',
+          'accept': 'application/json'
         },
       });
       setNotification({ type: 'success', message: 'Dołączenie do loterii zakończonie sukcesem. Powodzenia!' });
@@ -95,6 +104,7 @@ const Member = () => {
       setReceipt('');
       setNip('');
       setPurchaseDate('');
+      setCaptcha('');
       setTermsAccepted(false);
       setAgeConfirmed(false);
       setDataProcessingAccepted(false);
@@ -258,12 +268,12 @@ const Member = () => {
           <div className="checkbox-row">
             <input
               type="checkbox"
-              id="terms"
+              id="termsAccepted"
               checked={termsAccepted}
-              onChange={() => setTermsAccepted(!termsAccepted)}
+              onChange={(e) => setTermsAccepted(e.target.checked)}
               required
             />
-            <label htmlFor="terms">
+            <label htmlFor="termsAccepted">
               *Potwierdzam, że przystępuję do udziału w loterii pod nazwą „Świąteczna loteria w salonach Xiaomi i na mi-store.pl" („Loteria") jako konsument i zapoznałem(am) się z Regulaminem Loterii oraz akceptuję jego postanowienia.
             </label>
           </div>
@@ -272,7 +282,7 @@ const Member = () => {
               type="checkbox"
               id="ageConfirmed"
               checked={ageConfirmed}
-              onChange={() => setAgeConfirmed(!ageConfirmed)}
+              onChange={(e) => setAgeConfirmed(e.target.checked)}
               required
             />
             <label htmlFor="ageConfirmed">
@@ -284,7 +294,7 @@ const Member = () => {
               type="checkbox"
               id="dataProcessingAccepted"
               checked={dataProcessingAccepted}
-              onChange={() => setDataProcessingAccepted(!dataProcessingAccepted)}
+              onChange={(e) => setDataProcessingAccepted(e.target.checked)}
               required
             />
             <label htmlFor="dataProcessingAccepted">
@@ -295,10 +305,21 @@ const Member = () => {
               type="checkbox"
               id="newsletterAccepted"
               checked={newsletterAccepted}
-              onChange={() => setNewsletterAccepted(!newsletterAccepted)}
+              onChange={(e) => setNewsletterAccepted(e.target.checked)}
             />
             <label htmlFor="newsletterAccepted">
               *Wyrażam zgodę na przetwarzanie moich danych osobowych w celach marketingowych przez GG Stores sp. z o.o. sp. k., która będzie administratorem tych danych. Potwierdzam zapoznanie się z <a href="https://mi-store.pl/Polityka-prywatnosci-chelp-pol-32.html" target='blank'>informacjami dotyczącymi przetwarzania</a> moich danych osobowych przez tego administratora. Jestem świadomy(a), że moje dane będą przetwarzane w celu celach marketingowych m.in. poprzez zapis do newslettera i otrzymywanie wiadomości.            </label>
+          </div>
+          <div className="row">
+            <input
+              type="text"
+              id="captcha"
+              className="form-control"
+              placeholder="CAPTCHA"
+              value={captcha}
+              onChange={(e) => setCaptcha(e.target.value)}
+              required
+            />
           </div>
           <i>*pola obowiązkowe</i>
           <button
