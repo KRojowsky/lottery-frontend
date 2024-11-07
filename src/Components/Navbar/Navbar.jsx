@@ -6,7 +6,6 @@ import './Navbar.scss';
 import { Link } from "react-scroll";
 import { FaFacebookF, FaInstagram, FaTiktok, FaShoppingCart } from 'react-icons/fa';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-import StatusCheck from '../StatusCheck/StatusCheck';
 import CountdownTimer from '../CountdownTimer/CountdownTimer';
 
 const Navbar = () => {
@@ -60,7 +59,6 @@ const Navbar = () => {
               </a>
               <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                 <li>
-                  <button className="dropdown-item" onClick={() => setShowStatusPopup(true)}>SPRAWDŹ STATUS ZGŁOSZENIA</button>
                   <a className="dropdown-item" href="https://mi-store.pl/newsletter.php" target="_blank">Zapisz się do newslettera</a>
                 </li>
               </ul>

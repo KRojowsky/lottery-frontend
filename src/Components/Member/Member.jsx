@@ -14,7 +14,6 @@ const Member = () => {
   const [receipt, setReceipt] = useState('');
   const [nip, setNip] = useState('');
   const [purchaseDate, setPurchaseDate] = useState('');
-  const [captcha, setCaptcha] = useState('');
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [ageConfirmed, setAgeConfirmed] = useState(false);
   const [dataProcessingAccepted, setDataProcessingAccepted] = useState(false);
@@ -73,21 +72,17 @@ const Member = () => {
     }
 
     const data = {
-      captcha,
-      first_name: firstName, 
-      last_name: lastName, 
+      firstName,
+      lastName,
       phone: parseInt(phone, 10),
-      email, 
-      agreements: [
-        { type: "termsAccepted", accepted: termsAccepted },
-        { type: "ageConfirmed", accepted: ageConfirmed },
-        { type: "dataProcessingAccepted", accepted: dataProcessingAccepted },
-        { type: "newsletterAccepted", accepted: newsletterAccepted },
-      ],
+      email,
+      agreements: termsAccepted ? ["zgoda"] : [],
       receiptNumber: receipt,
       purchaseDate: purchaseDate.split('-').reverse().join('-'),
       nip,
     };
+    
+    console.log(data);
 
     try {
       await axios.post('https://api-loterie.dev-is.pl/application/mistore', data, {
@@ -104,7 +99,6 @@ const Member = () => {
       setReceipt('');
       setNip('');
       setPurchaseDate('');
-      setCaptcha('');
       setTermsAccepted(false);
       setAgeConfirmed(false);
       setDataProcessingAccepted(false);
@@ -309,17 +303,6 @@ const Member = () => {
             />
             <label htmlFor="newsletterAccepted">
               *Wyrażam zgodę na przetwarzanie moich danych osobowych w celach marketingowych przez GG Stores sp. z o.o. sp. k., która będzie administratorem tych danych. Potwierdzam zapoznanie się z <a href="https://mi-store.pl/Polityka-prywatnosci-chelp-pol-32.html" target='blank'>informacjami dotyczącymi przetwarzania</a> moich danych osobowych przez tego administratora. Jestem świadomy(a), że moje dane będą przetwarzane w celu celach marketingowych m.in. poprzez zapis do newslettera i otrzymywanie wiadomości.            </label>
-          </div>
-          <div className="row">
-            <input
-              type="text"
-              id="captcha"
-              className="form-control"
-              placeholder="CAPTCHA"
-              value={captcha}
-              onChange={(e) => setCaptcha(e.target.value)}
-              required
-            />
           </div>
           <i>*pola obowiązkowe</i>
           <button
