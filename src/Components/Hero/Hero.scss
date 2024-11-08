@@ -94,16 +94,17 @@
     a {
       background-color: $primary-color;
       color: $secondary-color;
-      padding: 10px 25px;
+      padding: 8px 28px;
       font-size: 20px;
       text-decoration: none;
-      border-radius: 5px;
+      border-radius: 25px;
       position: absolute;
       bottom: 20px;
       letter-spacing: 0.5px;
       text-transform: uppercase;
       transition: transform 0.3s ease-in-out;
       animation: wave 2.5s infinite;
+      border: 1px solid #FFF;
 
       &:hover {
         opacity: 0.7;

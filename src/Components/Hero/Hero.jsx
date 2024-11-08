@@ -47,7 +47,7 @@ const Hero = () => {
         </div>
         <div className="hero-down">
       <Link to="member" smooth={true} offset={-100} duration={100} className="scroll-link" >
-        Weź udział &#10140;
+        Weź udział
       </Link>
     </div>
       </div>
