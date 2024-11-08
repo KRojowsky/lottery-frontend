@@ -39,7 +39,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#" target="_blank" rel="noopener noreferrer">
+              <a className="nav-link" href="/Regulamin Świąteczna Loteria w salonach Xiaomi Store i na Mi-Store.pl 20241028.pdf" target="_blank" rel="noopener noreferrer">
                 Regulamin
               </a>
             </li>

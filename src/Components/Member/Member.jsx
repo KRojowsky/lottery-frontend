@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Member.scss';
@@ -23,6 +24,18 @@ const Member = () => {
   const [notification, setNotification] = useState({ type: '', message: '' });
   const [showConfetti, setShowConfetti] = useState(false);
 
+  useEffect(() => {
+    if (window.grecaptcha) return;
+
+    const script = document.createElement('script');
+    script.src = "https://www.google.com/recaptcha/api.js?render=6LfuxHgqAAAAAC_e5OOP8MH8X6kdf9ybKBTWn-hT";
+    script.addEventListener('load', () => {
+      window.grecaptcha.ready(() => {
+      });
+    });
+    document.body.appendChild(script);
+  }, []);
+
   const validatePhoneNumber = (number) => {
     const phoneRegex = /^[0-9]{9}$/;
     return phoneRegex.test(number);
@@ -45,6 +58,11 @@ const Member = () => {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!window.grecaptcha) {
+      setNotification({ type: 'error', message: 'Google reCAPTCHA nie jest dostępne.' });
+      return;
+    }
 
     if (!validatePhoneNumber(phone)) {
       setNotification({ type: 'error', message: 'Numer telefonu powinien się składać z dokładnie 9 cyfr.' });
@@ -71,7 +89,10 @@ const Member = () => {
       return;
     }
 
+    const token = await window.grecaptcha.execute('6LfuxHgqAAAAAC_e5OOP8MH8X6kdf9ybKBTWn-hT');
+
     const data = {
+      captcha: token,
       firstName,
       lastName,
       phone: parseInt(phone, 10),
@@ -305,6 +326,13 @@ const Member = () => {
               *Wyrażam zgodę na przetwarzanie moich danych osobowych w celach marketingowych przez GG Stores sp. z o.o. sp. k., która będzie administratorem tych danych. Potwierdzam zapoznanie się z <a href="https://mi-store.pl/Polityka-prywatnosci-chelp-pol-32.html" target='blank'>informacjami dotyczącymi przetwarzania</a> moich danych osobowych przez tego administratora. Jestem świadomy(a), że moje dane będą przetwarzane w celu celach marketingowych m.in. poprzez zapis do newslettera i otrzymywanie wiadomości.            </label>
           </div>
           <i>*pola obowiązkowe</i>
+          <div
+          className="g-recaptcha"
+          data-sitekey="6LfuxHgqAAAAAC_e5OOP8MH8X6kdf9ybKBTWn-hT"
+          data-size="invisible"
+          >
+
+          </div>
           <button
             type="submit"
             className={`btn btn-primary ${!isFormValid ? 'disabled' : ''}`}
