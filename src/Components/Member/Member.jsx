@@ -106,7 +106,7 @@ const Member = () => {
     console.log(data);
 
     try {
-      await axios.post('https://api-loterie.dev-is.pl/application/mistore', data, {
+      await axios.post('https://api2-loterie.grzegrzolka.com/application/mistore', data, {
         headers: {
           'Content-Type': 'application/json',
           'accept': 'application/json'
