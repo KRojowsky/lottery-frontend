@@ -4,12 +4,13 @@ import "./Hero.scss";
 import logo from "../../assets/landing-logo.png";
 import prizes from "../../assets/prizes.png";
 import { Link } from "react-scroll";
+import Snowfall from 'react-snowfall';
 
 const Hero = () => {
   useEffect(() => {
     const launchConfetti = () => {
       const end = Date.now() + 2000;
-      const colors = ['#FF0000', '#00FF00', '#FFD700', '#FFFFFF'];
+      const colors = ['#FEFFF3', '#03C03C', '#F34F41', '#FFFF000'];
 
       (function frame() {
         confetti({
@@ -48,6 +49,7 @@ const Hero = () => {
       </Link>
     </div>
       </div>
+      <Snowfall />
     </section>
   );
 };
