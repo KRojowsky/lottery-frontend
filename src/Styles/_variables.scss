@@ -14,32 +14,42 @@ $success-message-border: #c3e6cb;
 $error-message-bg: #f8d7da;
 $error-message-color: #721c24;
 $error-message-border: #f5c6cb;
+$img-border: #CCC;
 
 .btn-primary {
     background-color: $primary-color;
     color: $secondary-color;
     padding: 10px 20px;
     font-size: 18px;
-    border-radius: 5px;
+    border-radius: 30px;
     cursor: pointer;
     display: block;
     border: none;
-    width: 30%;
+    width: 100%;
+    max-width: 250px;
     transition: background-color 0.3s ease;
     margin: 0 auto;
+    margin-top: 30px;
+    border: 1px solid $secondary-color;
 
     &:hover {
         background-color: darken($primary-color, 10%);
-    }
-
-    @media (max-width: 768px) {
-        padding: 8px 18px;
-        font-size: 15px;
+        border: 1px solid $secondary-color;
     }
 }
 
 .section {
     padding: 150px 20px;
+
+    @media (max-width: 768px) {
+        padding: 100px 5px;
+        font-size: 15px;
+
+    }
+}
+
+.section2 {
+    padding: 100px 20px;
 
     @media (max-width: 768px) {
         padding: 100px 5px;

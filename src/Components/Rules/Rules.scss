@@ -49,14 +49,14 @@
             height: 55px;
             border-radius: 50%;
             background-color: $primary-color;
-            color: #fff;
+            color: $secondary-color;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             font-size: 2.2rem;
             line-height: 1;
-            border: 3px solid #dbdbdb; 
+            border: 3px solid $text-color; 
 
             @media (max-width: 768px) {
                 width: 45px;

@@ -1,10 +1,10 @@
 import React from 'react';
 import './Footer.scss';
-import { FaFacebook, FaInstagram, FaTiktok, FaShoppingCart } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaTiktok, FaShoppingCart, FaLinkedin, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer" id="footer">
       <div className="container">
         <div className="footer-content">
           <div className="footer-left">
@@ -25,6 +25,12 @@ const Footer = () => {
             </a>
             <a href="https://www.tiktok.com/@mistorepl" target='_blank' aria-label="Tik Tok">
                 <FaTiktok size={24} />
+            </a>
+            <a href="https://pl.linkedin.com/company/mi-store-pl" target='_blank' aria-label="LinkedIn">
+                <FaLinkedin size={24} />
+            </a>
+            <a href="https://www.youtube.com/channel/UCzr1kXAZakIcS53I2frXKGA" target='_blank' aria-label="YouTube">
+                <FaYoutube size={24} />
             </a>
           </div>
         </div>

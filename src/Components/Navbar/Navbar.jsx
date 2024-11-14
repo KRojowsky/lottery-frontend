@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './Navbar.scss';
 import { Link } from "react-scroll";
-import { FaFacebookF, FaInstagram, FaTiktok, FaShoppingCart } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaTiktok, FaShoppingCart, FaLinkedin, FaYoutube } from 'react-icons/fa';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import CountdownTimer from '../CountdownTimer/CountdownTimer';
 
@@ -49,7 +49,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="contact" smooth={true} offset={-100} duration={100} className="nav-link">
+              <Link to="footer" smooth={true} offset={-100} duration={100} className="nav-link">
                 Kontakt
               </Link>
             </li>
@@ -88,6 +88,18 @@ const Navbar = () => {
               overlay={<Tooltip id="tooltip-bottom">Odwiedź naszego Tiktoka</Tooltip>}
             >
               <a href="https://www.tiktok.com/@mistorepl" aria-label="TikTok" target='_blank'><FaTiktok /></a>
+            </OverlayTrigger>
+            <OverlayTrigger
+              placement="bottom"
+              overlay={<Tooltip id="tooltip-bottom">Odwiedź naszego LinkedIna</Tooltip>}
+            >
+              <a href="https://pl.linkedin.com/company/mi-store-pl" aria-label="LinkedIn" target='_blank'><FaLinkedin /></a>
+            </OverlayTrigger>
+            <OverlayTrigger
+              placement="bottom"
+              overlay={<Tooltip id="tooltip-bottom">Odwiedź naszego YouTube'a</Tooltip>}
+            >
+              <a href="https://www.youtube.com/channel/UCzr1kXAZakIcS53I2frXKGA" aria-label="YouTube" target='_blank'><FaYoutube /></a>
             </OverlayTrigger>
           </div>
         </div>

@@ -4,7 +4,7 @@
   background-color: $member-bg;
 }
 
-.section {
+.section2 {
   .container {
     max-width: 900px;
   }
@@ -61,6 +61,7 @@
     #receipt-btn {
         text-align: left;
         text-decoration: none;
+        margin-bottom: 20px;
 
         &:hover {
             text-decoration: underline;
@@ -132,14 +133,16 @@
 
 .popup-content {
   background-color: $secondary-color;
-  padding: 20px;
+  padding: 15px;
   position: relative;
   max-width: 90%;
-  max-height: 80%;
-  overflow: auto;
+  max-height: 100%;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 10px;
+
 
   .receipt-section {
     display: flex;
@@ -155,15 +158,19 @@
       align-items: center;
 
       h3 {
-        margin-bottom: 10px;
-        font-size: 1.2rem;
+        margin-bottom: 20px;
+        font-size: 1.3rem;
         color: $primary-color;
+
+        @media (max-width: 600px) {
+          font-size: 0.9rem;
+        }
       }
 
       img {
         max-width: 100%;
         height: auto;
-        border: 1px solid #ccc;
+        border: 1px solid $img-border;
         border-radius: 5px;
       }
     }
@@ -182,12 +189,16 @@
     &:hover {
       color: $primary-color;
     }
+
+    @media (max-width: 600px) {
+      font-size: 1rem;
+    }
   }
 }
 
 .btn.disabled {
-  background-color: #DBDBDB;
-  border: 1px solid #969595;
+  background-color: $img-border;
   cursor: not-allowed;
-  color: #000;
+  border: 1px solid $nav-hover;
+  color: $text-color;
 }
