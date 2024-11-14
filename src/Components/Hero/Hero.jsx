@@ -38,9 +38,6 @@ const Hero = () => {
       <div className="container">
         <div className="hero-up">
           <img src={logo} alt="Logo firmy" />
-          <div className="hero-title">
-            <h1>KUPUJ I WYGRAJ W ŚWIĄTECZNEJ LOTERII W SALONACH XIAOMI STORE I NA MI-STORE.PL</h1>
-          </div>
         </div>
         <div className="hero-middle">
           <img className="prizes" src={prizes} alt="Nagrody w Loterii" />

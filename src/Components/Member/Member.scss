@@ -1,10 +1,10 @@
 @import "../../Styles/_variables";
 
 .member {
-  background-color: $member-bg;
+  background: radial-gradient(circle, #ff3035, #ca0008);
 }
 
-.section2 {
+.section {
   .container {
     max-width: 900px;
   }
@@ -19,7 +19,7 @@
   }
 
   .row {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 
     .form-control {
       &:focus {
@@ -46,7 +46,7 @@
     .btn-link {
       background: none;
       border: none;
-      color: $primary-color;
+      color: #000;
       text-decoration: underline;
       cursor: pointer;
       font-size: 0.9rem;
@@ -96,7 +96,8 @@
 
     label {
       font-size: 0.9rem;
-      color: $text-color;
+      color: #FFF;
+      
 
       @media (max-width: 768px) {
         font-size: 0.85rem;
@@ -107,8 +108,8 @@
       }
 
       a {
-        color: $primary-color;
-        text-decoration: none;
+        color: #FFF;
+        text-decoration: underline;
 
         &:hover {
           text-decoration: underline;

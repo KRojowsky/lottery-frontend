@@ -179,7 +179,7 @@ const Member = () => {
   return (
     <section className="section member">
       <div className="container">
-        <h2 className="title">Weź udział</h2>
+      <h2 className="title" style={{ color: 'white' }}>Weź udział</h2>
         <form onSubmit={handleSubmit}>
           <div className="row">
             <input
