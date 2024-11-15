@@ -242,7 +242,7 @@ const Member = () => {
               type="text"
               id="nip"
               className="form-control"
-              placeholder="NIP"
+              placeholder="NIP z paragonu/faktury"
               value={nip}
               onChange={(e) => setNip(e.target.value)}
               required
