@@ -80,7 +80,7 @@ const Member = () => {
     }
 
     if (!validateNip(nip)) {
-      setNotification({ type: 'error', message: 'Podaj poprawny numer NIP.' });
+      setNotification({ type: 'error', message: 'Błędny numer NIP. Upewnij się, że zakup został dokonany w jednym z salonów Xiaomi Store lub na mi-store.pl' });
       return;
     }
 
@@ -89,13 +89,25 @@ const Member = () => {
       return;
     }
 
+    if (phone.length !== 9) {
+      setNotification({ type: 'error', message: 'Numer telefonu musi składać się z dokładnie 9 cyfr.' });
+      return;
+    }
+
     const token = await window.grecaptcha.execute('6LfuxHgqAAAAAC_e5OOP8MH8X6kdf9ybKBTWn-hT');
+
+    const phoneInt = parseInt(phone, 10);
+
+  if (isNaN(phoneInt) || phoneInt.toString().length !== 9) {
+    setNotification({ type: 'error', message: 'Numer telefonu powinien być liczbą składającą się z dokładnie 9 cyfr.' });
+    return;
+  }
 
     const data = {
       captcha: token,
       firstName,
       lastName,
-      phone: parseInt(phone, 10),
+      phone: phoneInt,
       email,
       agreements: termsAccepted ? ["zgoda"] : [],
       receiptNumber: receipt,
@@ -106,12 +118,13 @@ const Member = () => {
     console.log(data);
 
     try {
-      await axios.post('https://api2-loterie.grzegrzolka.com/application/mistore', data, {
+      const response = await axios.post('https://api2-loterie.grzegrzolka.com/application/mistore', data, {
         headers: {
           'Content-Type': 'application/json',
-          'accept': 'application/json'
+          'accept': 'application/json',
         },
       });
+      console.log('API response:', response);
       setNotification({ type: 'success', message: 'Dołączenie do loterii zakończonie sukcesem. Powodzenia!' });
       setFirstName('');
       setLastName('');
@@ -127,7 +140,12 @@ const Member = () => {
       setSelectAll(false);
       setShowConfetti(true);
     } catch (error) {
-      setNotification({ type: 'error', message: 'Wystąpił błąd podczas zgłaszania Twojego uczestnictwa w loterii. Spróbuj ponownie.' });
+      if (error.response) {
+        console.error('API error response:', error.response.data);
+        setNotification({ type: 'error', message: 'Wystąpił błąd podczas zgłaszania Twojego uczestnictwa w loterii. Spróbuj ponownie.' });
+      } else {
+        console.error('Network or other error:', error.message);
+      }
     }
   };
 
@@ -258,6 +276,8 @@ const Member = () => {
               className="form-control"
               value={purchaseDate}
               onChange={(e) => setPurchaseDate(e.target.value)}
+              min="2024-11-15"
+              max={new Date().toISOString().split('T')[0]}
               required
             />
             <button
@@ -289,7 +309,7 @@ const Member = () => {
               required
             />
             <label htmlFor="termsAccepted">
-              *Potwierdzam, że przystępuję do udziału w loterii pod nazwą „Świąteczna loteria w salonach Xiaomi i na mi-store.pl" („Loteria") jako konsument i zapoznałem(am) się z Regulaminem Loterii oraz akceptuję jego postanowienia.
+              *Potwierdzam, że przystępuję do udziału w loterii pod nazwą „Świąteczna loteria w salonach Xiaomi i na mi-store.pl" („Loteria") jako konsument i zapoznałem(am) się z <a href="/Regulamin Świąteczna Loteria.pdf" target="_blank">Regulaminem Loterii</a> oraz akceptuję jego postanowienia.
             </label>
           </div>
           <div className="checkbox-row">
@@ -301,7 +321,7 @@ const Member = () => {
               required
             />
             <label htmlFor="ageConfirmed">
-              *Potwierdzam, że ukończyłem(am) 18 lat oraz spełniam warunki uczestnictwa określone w Regulaminie Loterii, w tym nie należę do osób wyłączonych z udziału, zgodnie z pkt 9. Regulaminu.
+              *Potwierdzam, że ukończyłem(am) 18 lat oraz spełniam warunki uczestnictwa określone w <a href="/Regulamin Świąteczna Loteria.pdf" target="_blank">Regulaminie Loterii</a>, w tym nie należę do osób wyłączonych z udziału, zgodnie z pkt 9. Regulaminu.
             </label>
           </div>
           <div className="checkbox-row">
